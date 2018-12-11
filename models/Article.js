@@ -6,8 +6,14 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 var ArticleSchema = new Schema({
-  // `title` is required and of type String
+  // `title` is required, of type String, and unique
   title: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  // body is required and of type String
+  body: {
     type: String,
     required: true
   },
