@@ -40,16 +40,7 @@ module.exports = function (app) {
             res.send("Scrape Complete");
         });
     });
-    // Get all articles in the db
-    app.get("/api/all", function (req, res) {
-        db.Article.find({})
-            .then(function (dbArticle) {
-                res.json(dbArticle);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
-    });
+
     // Get article by id
     app.get("/articles/:id", function (req, res) {
         db.Article.findOne({ _id: req.params.id })

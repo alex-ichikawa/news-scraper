@@ -6,7 +6,11 @@
     </div>
     <div class="row">
         <div class="col-9">
-            <div class="articles"></div>
+            <div class="articles">
+                {{#each article}}
+                <h4>{{title}}</h4><p>{{body}}</p><a href="{{link}}" target='_blank'>{{link}}</a> <br /> <button data-id="{{_id}}" type='button' class='btn btn-primary'>Add Note</button>
+                {{/each}}
+            </div>
         </div>
         <div class="col-3">
             <div id="notes"></div>

@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $("#notes").hide();
     scrapeAll();
-    renderArticles();
 });
 
 const scrapeAll = () => {
@@ -9,16 +8,6 @@ const scrapeAll = () => {
         type: "Get"
     }).done(function (data) {
         console.log(data);
-        renderArticles();
-    });
-
-}
-
-const renderArticles = () => {
-    $.getJSON("/api/all", function (articles) {
-        for (let i = 0; i < articles.length; i++) {
-            $(".articles").prepend("<h4>" + articles[i].title + "</h4><p>" + articles[i].body + "</p>" + "<a href='" + articles[i].link + "' target='_blank'>" + articles[i].link + "</a> <br /> <button data-id='" + articles[i]._id + "'type='button' class='btn btn-primary'>Add Note</button>");
-        }
     });
 }
 
@@ -55,9 +44,6 @@ $(document).on("keyup", "#bodyinput", function() {
 
 $(document).on("click", "#savenote", function () {
     let thisId = $(this).attr("data-id");
-    console.log(thisId);
-    console.log('title ' + titleString);
-    console.log('body ' + bodyString);
     $.ajax({
         method: "POST",
         url: "/articles/" + thisId,
@@ -67,7 +53,6 @@ $(document).on("click", "#savenote", function () {
         }
     })
         .then(function (data) {
-            console.log(data);
             $("#notes").empty();
         });
     $("#titleinput").val("");
