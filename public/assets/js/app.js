@@ -17,7 +17,7 @@ const scrapeAll = () => {
 const renderArticles = () => {
     $.getJSON("/api/all", function (articles) {
         for (let i = 0; i < articles.length; i++) {
-            $(".articles").append("<h4>" + articles[i].title + "</h4><p>" + articles[i].body + "</p>" + "<a href='" + articles[i].link + "' target='_blank'>" + articles[i].link + "</a> <br /> <button data-id='" + articles[i]._id + "'type='button' class='btn btn-primary'>Add Note</button>");
+            $(".articles").prepend("<h4>" + articles[i].title + "</h4><p>" + articles[i].body + "</p>" + "<a href='" + articles[i].link + "' target='_blank'>" + articles[i].link + "</a> <br /> <button data-id='" + articles[i]._id + "'type='button' class='btn btn-primary'>Add Note</button>");
         }
     });
 }
